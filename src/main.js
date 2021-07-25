@@ -2,6 +2,8 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
+import JsonEditor from "vue-json-edit";
+
 import {
   FormModel,
   Input,
@@ -11,9 +13,13 @@ import {
   Select,
   DatePicker,
   Switch,
+  Row,
+  Col,
 } from "ant-design-vue";
 import "ant-design-vue/dist/antd.css";
-
+Vue.use(Row);
+Vue.use(Col);
+Vue.use(JsonEditor);
 Vue.use(Switch);
 Vue.use(DatePicker);
 Vue.use(FormModel);

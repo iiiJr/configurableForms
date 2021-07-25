@@ -1,15 +1,21 @@
 <template>
-  <div>
-    <DynamicForm :formList="formDataList">
-      <a-form-model-item>
-        <a-button type="primary" @click="onSubmit"> Create </a-button>
-        <a-button style="margin-left: 10px"> Cancel </a-button>
-      </a-form-model-item>
-    </DynamicForm>
-  </div>
+  <a-row type="flex">
+    <a-col>
+      <DynamicForm :formList="formDataList" class="formStyle">
+        <a-form-model-item>
+          <a-button type="primary" @click="onSubmit"> Create </a-button>
+          <a-button style="margin-left: 10px"> Cancel </a-button>
+        </a-form-model-item>
+      </DynamicForm>
+    </a-col>
+    <a-col>
+      <vueJsonEditor class="editerStyle">aaaaaa</vueJsonEditor>
+    </a-col>
+  </a-row>
 </template>
 <script>
 import DynamicForm from "../components/formList.vue";
+import vueJsonEditor from "../components/JSONEditor.vue";
 export default {
   data() {
     return {
@@ -83,6 +89,7 @@ export default {
   components: {
     // 使用动态表单组件
     DynamicForm,
+    vueJsonEditor,
   },
   methods: {
     onSubmit() {
@@ -97,4 +104,10 @@ export default {
 
 <style lang="scss" scoped>
 //@import url(); 引入公共css类
+// .formStyle {
+//   width: 40%;
+// }
+// .editerStyle {
+//   width: 50%;
+// }
 </style>
