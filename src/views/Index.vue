@@ -1,70 +1,95 @@
 <template>
-  <a-form-model :model="form" :label-col="labelCol" :wrapper-col="wrapperCol">
-    <a-form-model-item label="Activity name">
-      <a-input v-model="form.name" />
-    </a-form-model-item>
-    <a-form-model-item label="Activity zone">
-      <a-select v-model="form.region" placeholder="please select your zone">
-        <a-select-option value="shanghai"> Zone one </a-select-option>
-        <a-select-option value="beijing"> Zone two </a-select-option>
-      </a-select>
-    </a-form-model-item>
-    <a-form-model-item label="Activity time">
-      <a-date-picker
-        v-model="form.date1"
-        show-time
-        type="date"
-        placeholder="Pick a date"
-        style="width: 100%"
-      />
-    </a-form-model-item>
-    <a-form-model-item label="Instant delivery">
-      <a-switch v-model="form.delivery" />
-    </a-form-model-item>
-    <a-form-model-item label="Activity type">
-      <a-checkbox-group v-model="form.type">
-        <a-checkbox value="1" name="type"> Online </a-checkbox>
-        <a-checkbox value="2" name="type"> Promotion </a-checkbox>
-        <a-checkbox value="3" name="type"> Offline </a-checkbox>
-      </a-checkbox-group>
-    </a-form-model-item>
-    <a-form-model-item label="Resources">
-      <a-radio-group v-model="form.resource">
-        <a-radio value="1"> Sponsor </a-radio>
-        <a-radio value="2"> Venue </a-radio>
-      </a-radio-group>
-    </a-form-model-item>
-    <a-form-model-item label="Activity form">
-      <a-input v-model="form.desc" type="textarea" />
-    </a-form-model-item>
-    <a-form-model-item :wrapper-col="{ span: 14, offset: 4 }">
-      <a-button type="primary" @click="onSubmit"> Create </a-button>
-      <a-button style="margin-left: 10px"> Cancel </a-button>
-    </a-form-model-item>
-    <!-- 个性化 -->
-    <slot></slot>
-  </a-form-model>
+  <div>
+    <DynamicForm :formList="formDataList">
+      <a-form-model-item>
+        <a-button type="primary" @click="onSubmit"> Create </a-button>
+        <a-button style="margin-left: 10px"> Cancel </a-button>
+      </a-form-model-item>
+    </DynamicForm>
+  </div>
 </template>
 <script>
+import DynamicForm from "../components/formList.vue";
 export default {
   data() {
     return {
-      labelCol: { span: 4 },
-      wrapperCol: { span: 14 },
-      form: {
-        name: "",
-        region: undefined,
-        date1: undefined,
-        delivery: false,
-        type: [],
-        resource: "",
-        desc: "",
-      },
+      formDataList: [
+        {
+          componentName: "a-input",
+          formLabel: "活动名称",
+          value: "",
+          placeholder: "test",
+        },
+        {
+          componentName: "a-select",
+          formLabel: "活动名称",
+          value: "select",
+          placeholder: "select one",
+          options: [
+            {
+              label: "options",
+              value: "111",
+            },
+            {
+              label: "options",
+              value: "222",
+            },
+          ],
+        },
+        {
+          componentName: "a-data-picker",
+          formLabel: "活动时间",
+          value: undefined,
+          placeholder: "picker",
+        },
+        {
+          componentName: "a-switch",
+          formLabel: "活动开关",
+          value: true,
+        },
+        {
+          componentName: "a-checkbox-group",
+          formLabel: "活动多选",
+          type: [],
+          groups: [
+            {
+              index: 1,
+              name: "checkbox1",
+              type: "type",
+            },
+            {
+              index: 2,
+              name: "checkbox2",
+              type: "type",
+            },
+          ],
+        },
+        {
+          componentName: "a-radio-group",
+          formLabel: "活动单选",
+          value: "a-radio-group",
+          groups: [
+            {
+              name: "radio",
+            },
+            {
+              name: "radio2",
+            },
+          ],
+        },
+      ],
     };
+  },
+  components: {
+    // 使用动态表单组件
+    DynamicForm,
   },
   methods: {
     onSubmit() {
-      console.log("submit!", this.form);
+      const formValueList = this.formDataList;
+      console.log(formValueList);
+      const jsonList = JSON.stringify(formValueList);
+      console.log(jsonList);
     },
   },
 };
