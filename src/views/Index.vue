@@ -1,17 +1,24 @@
 <template>
-  <a-row type="flex">
-    <a-col>
-      <DynamicForm :formList="formDataList" class="formStyle">
-        <a-form-model-item>
-          <a-button type="primary" @click="onSubmit"> Create </a-button>
-          <a-button style="margin-left: 10px"> Cancel </a-button>
-        </a-form-model-item>
-      </DynamicForm>
-    </a-col>
-    <a-col>
-      <vueJsonEditor class="editerStyle">aaaaaa</vueJsonEditor>
-    </a-col>
-  </a-row>
+  <div style="height: 100%; width: 100%">
+    <a-row type="flex">
+      <a-col :span="10" class="card_top_style">
+        <DynamicForm :formList="formDataList" class="formStyle">
+          <a-form-model-item>
+            <a-button type="primary" @click="onSubmit"> Create </a-button>
+            <a-button style="margin-left: 10px"> Cancel </a-button>
+          </a-form-model-item>
+        </DynamicForm>
+        <vueJsonEditor :json="formDataList" style="height: 200px" />
+      </a-col>
+      <a-col :span="14" class="card_top_style">
+        <vueJsonEditor
+          :json="formDataList"
+          style="height: 600px"
+          @JsonChange="JsonChange"
+        />
+      </a-col>
+    </a-row>
+  </div>
 </template>
 <script>
 import DynamicForm from "../components/formList.vue";
@@ -84,6 +91,7 @@ export default {
           ],
         },
       ],
+      dataList: [],
     };
   },
   components: {
@@ -98,16 +106,17 @@ export default {
       const jsonList = JSON.stringify(formValueList);
       console.log(jsonList);
     },
+    JsonChange(value) {
+      console.log(value);
+      this.formDataList = value;
+    },
   },
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 //@import url(); 引入公共css类
-// .formStyle {
-//   width: 40%;
-// }
-// .editerStyle {
-//   width: 50%;
-// }
+.card_top_style {
+  margin-top: 16px;
+}
 </style>

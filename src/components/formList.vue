@@ -112,6 +112,6 @@ export default {
   activated() {},
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 //@import url(); 引入公共css类
 </style>

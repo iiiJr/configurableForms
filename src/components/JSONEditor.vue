@@ -1,14 +1,12 @@
 <template>
-  <div>
-    <p>vue-json-editor</p>
+  <div class="jsonEditor">
     <vue-json-editor
       v-model="json"
-      :show-btns="true"
+      :show-btns="false"
       :mode="'code'"
       lang="zh"
+      style="height: 600px"
       @json-change="onJsonChange"
-      @json-save="onJsonSave"
-      @has-error="onError"
     ></vue-json-editor>
   </div>
 </template>
@@ -17,11 +15,14 @@ import vueJsonEditor from "vue-json-editor";
 
 export default {
   data() {
-    return {
-      json: {
-        msg: "demo of jsoneditor",
-      },
-    };
+    return {};
+  },
+  props: {
+    json: { type: Array },
+    height: {
+      type: Number,
+      default: 600,
+    },
   },
 
   components: {
@@ -30,17 +31,14 @@ export default {
 
   methods: {
     onJsonChange(value) {
-      console.log("value:", value);
-    },
-    onJsonSave(value) {
-      console.log("value:", value);
-    },
-    onError(value) {
-      console.log("value:", value);
+      this.$emit("JsonChange", value);
     },
   },
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 //@import url(); 引入公共css类
+.jsoneditor-vue {
+  height: 100%;
+}
 </style>
