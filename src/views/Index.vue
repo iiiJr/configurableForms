@@ -107,7 +107,6 @@ export default {
       console.log(jsonList);
     },
     JsonChange(value) {
-      console.log(value);
       this.formDataList = value;
     },
   },
