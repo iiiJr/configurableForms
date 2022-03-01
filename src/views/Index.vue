@@ -3,6 +3,8 @@
       <div class="header">header</div>
       <div class="body">
         <div class="left">
+        </div>
+        <div class="center">
             <form-model
             @updateJsonData="update"
             :jsonData="jsonData"
@@ -92,6 +94,8 @@ export default {
 .header {
     // padding-bottom: 8px;
     background-color: #2c3e50;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 .body {
     padding-top: 8px;
@@ -99,11 +103,14 @@ export default {
     flex-direction: row;
 }
 .left {
-  width: 50%;
+  width: 20%;
   padding-left: 8px;
 }
+.center {
+  width: 40%;
+}
 .right {
-  width: 50%;
+  width: 40%;
   padding-right: 8px;
 }
 .footer {
