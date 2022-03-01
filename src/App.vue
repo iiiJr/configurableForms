@@ -1,21 +1,28 @@
 <template>
-  <div class="main">
-    <div>
-      <router-link to="/"></router-link>
-    </div>
-    <div class="other">
-      <router-view></router-view>
-    </div>
+  <div id="app">
+    <router-view></router-view>
   </div>
 </template>
 
-<style lang="scss">
-.main {
-  display: flex;
-  .other {
-    margin: auto;
-    height: 100%;
-    width: 80%;
-  }
+<script>
+export default {
+  name: 'App'
 }
+</script>
+
+<style lang="less">
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 </style>

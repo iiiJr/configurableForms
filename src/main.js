@@ -1,37 +1,21 @@
-import Vue from "vue";
-import App from "./App.vue";
-import router from "./router";
-import store from "./store";
-import JsonEditor from "vue-json-edit";
+import Vue from 'vue'
+import App from './App.vue'
+import store from './store'
+import router from './router'
+import { FormModel, Switch, Button, Input, Checkbox, Radio, Select, DatePicker } from 'ant-design-vue'
 
-import {
-  FormModel,
-  Input,
-  Radio,
-  Checkbox,
-  Button,
-  Select,
-  DatePicker,
-  Switch,
-  Row,
-  Col,
-} from "ant-design-vue";
-import "ant-design-vue/dist/antd.css";
-Vue.use(Row);
-Vue.use(Col);
-Vue.use(JsonEditor);
-Vue.use(Switch);
-Vue.use(DatePicker);
-Vue.use(FormModel);
-Vue.use(Input);
-Vue.use(Radio);
-Vue.use(Checkbox);
-Vue.use(Button);
-Vue.use(Select);
-Vue.config.productionTip = false;
+Vue.config.productionTip = false
+Vue.use(FormModel)
+Vue.use(Button)
+Vue.use(Input)
+Vue.use(Checkbox)
+Vue.use(Radio)
+Vue.use(Select)
+Vue.use(DatePicker)
+Vue.use(Switch)
 
 new Vue({
-  router,
   store,
-  render: (h) => h(App),
-}).$mount("#app");
+  router,
+  render: h => h(App)
+}).$mount('#app')
