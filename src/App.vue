@@ -1,6 +1,8 @@
 <template>
   <div id="app">
+    <div class="header"><p>header</p></div>
     <router-view></router-view>
+    <div class="footer"><p>footer</p></div>
   </div>
 </template>
 
@@ -16,7 +18,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #ffffff;
 }
 .container {
   padding-right: 15px;
@@ -24,5 +26,14 @@ export default {
   margin-right: auto;
   margin-left: auto;
 }
-
+.header {
+    // padding-bottom: 8px;
+    background-color: #2c3e50;
+    height: 50px;
+}
+.footer {
+    // padding-top: 8px;
+    background-color: #2c3e50;
+    height: 50px;
+}
 </style>

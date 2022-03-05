@@ -1,84 +1,69 @@
 <template>
   <div class="container">
-      <div class="header">header</div>
       <div class="body">
         <div class="left">
+          <draggable
+          @change="log"
+          :sort=false
+          class="draggableBox"
+          v-bind="dragOptions"
+          :list="this.componentList"
+          :group="{name: 'draggableGroup', pull: 'clone', put: false}"
+        >
+          <div
+            :key="element.type"
+            class="list-group-item2"
+            v-for="element in this.componentList"
+          >
+            <ComponentNode :nodeName="element.title"/>
+          </div>
+        </draggable>
         </div>
         <div class="center">
-            <form-model
-            @updateJsonData="update"
-            :jsonData="jsonData"
-            ></form-model>
+          表单栏
         </div>
         <div class="right">
-            <!-- <hello-world></hello-world> -->
-            <json-edit
-            @change="update"
-            :value="jsonData"></json-edit>
+          配置栏
         </div>
-      </div>
-      <div class="footer">footer</div>
+        </div>
   </div>
 </template>
 
 <script>
 // import HelloWorld from '../components/HelloWorld.vue'
-import formModel from '../components/formModel.vue'
-import jsonEdit from '../components/jsonEdit.vue'
-// @ is an alias to /src
-// import form from 'form'
+import draggable from 'vuedraggable'
+import { mapState } from 'vuex'
+import ComponentNode from '../components/ComponentNode.vue'
 
 export default {
   name: 'index',
   components: {
     // HelloWorld
-    formModel,
-    jsonEdit
+    ComponentNode,
+    draggable
   },
   data () {
     return {
-      jsonData: [
-        {
-          name: 'testinput',
-          label: 'test123',
-          placeholder: ''
-        },
-        {
-          name: 'testselect',
-          label: '',
-          options: ['test1'],
-          placeholder: ''
-        },
-        {
-          name: 'testdatepicker',
-          label: '',
-          placeholder: ''
-        },
-        {
-          name: 'testswitch',
-          label: ''
-        },
-        {
-          name: 'testcheckbox',
-          label: '',
-          options: ['test1']
-        },
-        {
-          name: 'testradio',
-          label: '',
-          options: ['test1']
-        }
-      ]
+    }
+  },
+  computed: {
+    ...mapState(['componentList', 'canvasList']),
+    dragOptions () {
+      return {
+        animation: 500,
+        group: 'description',
+        disabled: false,
+        dragClass: 'dragItem',
+        ghostClass: 'ghostItem',
+        chosenClass: 'chosenItem'
+      }
     }
   },
   mounted () {
   },
   methods: {
-    update (data) {
-      if (this.jsonData !== data) {
-        this.jsonData = data
-      }
-      // console.log(data)
+    log: (evt) => {
+      window.console.log(evt)
     }
   }
 }
@@ -91,29 +76,24 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-.header {
-    // padding-bottom: 8px;
-    background-color: #2c3e50;
-    padding-left: 8px;
-    padding-right: 8px;
-}
 .body {
-    padding-top: 8px;
     display: flex;
     flex-direction: row;
 }
 .left {
-  width: 20%;
-  padding-left: 8px;
+  width: 15%;
 }
 .center {
-  width: 40%;
+  width: 50%;
 }
 .right {
-  width: 40%;
-  padding-right: 8px;
+  width: 35%;
 }
-.footer {
-    padding-top: 8px;
+.draggableBox {
+  display: flex;
+  flex-wrap: wrap;
+}
+.list-group-item2 {
+  width: 100%;
 }
 </style>
