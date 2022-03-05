@@ -1,6 +1,5 @@
 <template>
   <div id="main">
-    <div class="header"><p>header</p></div>
     <router-view></router-view>
   </div>
 </template>
@@ -19,11 +18,6 @@ export default {
 #main {
   width: 100%;
   height: 100%;
-}
-.header {
-    // padding-bottom: 8px;
-    background-color: #2c3e50;
-    height: 50px;
 }
 
 </style>

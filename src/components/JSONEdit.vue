@@ -1,6 +1,6 @@
 <template>
   <!-- 设置外层高度，jsoneditor 会根据外层高度来初始化 -->
-  <div style="height: 600px">
+  <div style="height: 100%">
     <!-- 提供一个绑定 id 的元素进行初始化 -->
     <div id="jsoneditor"></div>
   </div>

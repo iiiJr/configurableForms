@@ -40,11 +40,11 @@
               </div>
             </div>
           </draggable>
-          <a-form-model-item :wrapper-col="{ span: 14, offset: 4 }">
-            <a-button type="primary" @click="onSubmit">
+          <div class="center-button">
+            <a-button style="margin: auto;" type="primary" @click="onSubmit">
               Create
             </a-button>
-          </a-form-model-item>
+          </div>
         </div>
         <div class="right">
           <JSONEdit v-model="updateJSON" />
@@ -73,7 +73,8 @@ export default {
   data () {
     return {
       activeIndex: {},
-      editElement: -1
+      editElement: -1,
+      replaceJson: []
     }
   },
   computed: {
@@ -98,6 +99,7 @@ export default {
     }
   },
   mounted () {
+    this.replaceJson = this.canvasList
   },
   // watch() {
 
@@ -125,20 +127,26 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  height: 100%;
 }
 .body {
     display: flex;
     flex-direction: row;
+    height: 100%;
 }
 .left {
+  background-color: #838383d7;
   width: 15%;
+  height: 100%;
 }
 .center {
+  background-color: #cfcfcfda;
   width: 50%;
+  height: 100%;
 }
 .right {
   width: 35%;
+  height: 100%;
 }
 .draggableBox {
   display: flex;
@@ -157,6 +165,7 @@ p{
   border-bottom: 1px solid #8c90977e;
   border-left: 1px solid #8c90977e;
   border-right: 1px solid #8c90977e;
+  background-color: #b9b9b9da;
 }
 .canvas_item_node {
   min-width: 80%;
@@ -165,5 +174,9 @@ p{
 .canvas_item_button {
   min-width: 20%;
   margin: auto;
+}
+.center-button {
+  margin-top: 8px;
+  display: flex;
 }
 </style>

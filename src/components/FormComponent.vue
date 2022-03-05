@@ -28,24 +28,24 @@
       <a-switch v-model="form.delivery" />
     </a-form-model-item>
     <a-form-model-item :label="element.title" v-if="element.type === 'checkbox'">
-      <a-checkbox-group
-        v-model="form.type"
-        v-for="(value, index) in element.defaultValue"
-        :placeholder="element.placeholder"
-        :key="index">
-        <a-checkbox :value="index" name="type">
-          {{value}}
+      <a-checkbox-group v-model="form.type">
+        <a-checkbox
+        v-for="(val, index) in element.defaultValue"
+        :key="index"
+        :value="index"
+        name="type">
+          {{val}}
         </a-checkbox>
       </a-checkbox-group>
     </a-form-model-item>
     <a-form-model-item :label="element.title" v-if="element.type === 'radio'">
       <a-radio-group
-      v-model="form.resource"
-      v-for="(value, index) in element.defaultValue"
-      :placeholder="element.placeholder"
-      :key="index">
-        <a-radio :value="index">
-          {{value}}
+      v-model="form.resource">
+        <a-radio
+        v-for="(val, index) in element.defaultValue"
+        :key="index"
+        :value="index">
+          {{val}}
         </a-radio>
       </a-radio-group>
     </a-form-model-item>
@@ -84,6 +84,7 @@ export default {
 </script>
 <style scoped>
 .form-model {
+
   display: flex;
   flex-flow: column;
   justify-content: left;
