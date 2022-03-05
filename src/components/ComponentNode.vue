@@ -32,6 +32,11 @@ export default {
   color: #b3b1b1;
   width: 100%;
   height: 24px;
+  display: flex;
+  align-items: center;
+}
+p{
+  margin: 0 auto;
 }
 .nodeBox:hover {
   background: #314558a4;

@@ -6,28 +6,22 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     componentList: [
-      { type: 'text', title: '单行文本', id: 1 },
+      { type: 'input', title: '输入框', id: 1 },
       { type: 'textarea', title: '多行文本', id: 2 },
-      { type: 'multiSelect', title: '多选', id: 3 },
+      { type: 'picker', title: '时间选择', id: 3 },
       { type: 'select', title: '下拉列表', id: 4 },
-      { type: 'cascader', title: '级联下拉', id: 5 },
-      { type: 'date', title: '日期', id: 6 },
-      { type: 'time', title: '时间', id: 7 },
-      { type: 'dateTime', title: '日期时间', id: 8 },
-      { type: 'number', title: '数值', id: 9 },
-      { type: 'integer', title: '整数', id: 10 }
+      { type: 'switch', title: '开关', id: 5 },
+      { type: 'checkbox', title: '多选框', id: 6 },
+      { type: 'radio', title: '单选框', id: 7 }
     ],
     canvasList: [
-      { type: 'input', title: '单行文本', placeholder: '', defaultValue: '', id: 101 },
-      { type: 'textarea', title: '多行文本', id: 102 },
-      { type: 'multiSelect', title: '多选', placeholder: '', defaultValue: [], id: 103 },
-      { type: 'select', title: '下拉列表', id: 104 },
-      { type: 'cascader', title: '级联下拉', id: 105 },
-      { type: 'date', title: '日期', id: 106 },
-      { type: 'time', title: '时间', id: 107 },
-      { type: 'dateTime', title: '日期时间', id: 108 },
-      { type: 'number', title: '数值', id: 109 },
-      { type: 'integer', title: '整数', id: 110 }
+      { type: 'input', title: '输入框', placeholder: '', id: 101 },
+      { type: 'textarea', title: '多行文本', placeholder: '', id: 102 },
+      { type: 'picker', title: '时间选择', placeholder: '', id: 103 },
+      { type: 'select', title: '下拉列表', placeholder: '', defaultValue: ['test1', 'test2'], id: 104 },
+      { type: 'switch', title: '开关', placeholder: '', id: 105 },
+      { type: 'checkbox', title: '多选框', placeholder: '', defaultValue: ['test1', 'test2'], id: 106 },
+      { type: 'radio', title: '单选框', placeholder: '', defaultValue: ['test1', 'test2'], id: 107 }
     ]
   },
   mutations: {
