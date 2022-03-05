@@ -9,7 +9,6 @@
 <script>
 // 引入 jsoneditor 方法
 import JSONEditor from 'jsoneditor/dist/jsoneditor.min.js'
-
 export default {
   data () {
     return {
@@ -84,6 +83,7 @@ export default {
       // 更新内部值
       this.innerValue = val
       // 通过 $emit 触发 change 事件，将 val 值更新到 v-model
+      console.log(val)
       this.$emit('change', val)
     }
   }

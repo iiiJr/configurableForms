@@ -44,13 +44,10 @@
             <a-button type="primary" @click="onSubmit">
               Create
             </a-button>
-            <a-button style="margin-left: 10px;">
-              Cancel
-            </a-button>
           </a-form-model-item>
         </div>
         <div class="right">
-          <JSONEdit v-model="this.canvasList"/>
+          <JSONEdit v-model="updateJSON" />
         </div>
       </div>
   </div>
@@ -90,10 +87,21 @@ export default {
         ghostClass: 'ghostItem',
         chosenClass: 'chosenItem'
       }
+    },
+    updateJSON: {
+      get () {
+        return this.$store.state.canvasList
+      },
+      set (val) {
+        this.$store.commit('mutationCanvas', val)
+      }
     }
   },
   mounted () {
   },
+  // watch() {
+
+  // },
   methods: {
     handleGroupItem (index, element) {
       this.activeIndex = index
@@ -104,7 +112,7 @@ export default {
     },
     onSubmit () {
       this.log('submit!', this.canvasList)
-      console.log(JSON.stringify(this.canvasList))
+      console.log(this.canvasList)
     },
     delItem (index) {
       this.canvasList.splice(index, 1)

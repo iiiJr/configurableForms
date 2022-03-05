@@ -15,13 +15,13 @@ const store = new Vuex.Store({
       { type: 'radio', title: '单选框', id: 7 }
     ],
     canvasList: [
-      { type: 'input', title: '输入框', placeholder: '', id: 101 },
-      { type: 'textarea', title: '多行文本', placeholder: '', id: 102 },
+      { type: 'input', title: '输入框', id: 101 },
+      { type: 'textarea', title: '多行文本', id: 102 },
       { type: 'picker', title: '时间选择', placeholder: '', id: 103 },
       { type: 'select', title: '下拉列表', placeholder: '', defaultValue: ['test1', 'test2'], id: 104 },
-      { type: 'switch', title: '开关', placeholder: '', id: 105 },
-      { type: 'checkbox', title: '多选框', placeholder: '', defaultValue: ['test1', 'test2'], id: 106 },
-      { type: 'radio', title: '单选框', placeholder: '', defaultValue: ['test1', 'test2'], id: 107 }
+      { type: 'switch', title: '开关', id: 105 },
+      { type: 'checkbox', title: '多选框', defaultValue: ['test1', 'test2'], id: 106 },
+      { type: 'radio', title: '单选框', defaultValue: ['test1', 'test2'], id: 107 }
     ]
   },
   mutations: {

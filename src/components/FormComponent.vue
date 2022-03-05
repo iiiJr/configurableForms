@@ -6,7 +6,7 @@
     <a-form-model-item :label="element.title" v-if="element.type === 'select'">
       <a-select
         v-model="form.region"
-        placeholder="please select your zone">
+        :placeholder="element.placeholder">
         <a-select-option
          v-for="(val, index) in element.defaultValue"
         :key="index"
@@ -20,7 +20,7 @@
         v-model="form.date1"
         show-time
         type="date"
-        placeholder="Pick a date"
+        :placeholder="element.placeholder"
         style="width: 100%;"
       />
     </a-form-model-item>
@@ -31,6 +31,7 @@
       <a-checkbox-group
         v-model="form.type"
         v-for="(value, index) in element.defaultValue"
+        :placeholder="element.placeholder"
         :key="index">
         <a-checkbox :value="index" name="type">
           {{value}}
@@ -41,6 +42,7 @@
       <a-radio-group
       v-model="form.resource"
       v-for="(value, index) in element.defaultValue"
+      :placeholder="element.placeholder"
       :key="index">
         <a-radio :value="index">
           {{value}}
