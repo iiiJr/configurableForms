@@ -1,7 +1,5 @@
 # configurable_forms
-表单自定义配置化项目，基于Vue.js, Vuex, antd。实现了表单自定义配置，json可编辑表单中的配置，预览表单。
-[]: # Language: markdown
-[]: # Path: README.md
+表单自定义配置化项目，基于Vue.js, Vuex, antd。实现了表单自定义配置，json可编辑表单中的配置，预览表单
 ## Project setup
 ```
 npm install
