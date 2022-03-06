@@ -71,7 +71,7 @@ import FormComponent from '../components/FormComponent.vue'
 import JSONEdit from '../components/JSONEdit.vue'
 
 export default {
-  name: 'index',
+  name: 'Index',
   components: {
     // HelloWorld
     ComponentNode,
