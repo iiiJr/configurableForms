@@ -69,6 +69,7 @@ import { mapState } from 'vuex'
 import ComponentNode from '../components/ComponentNode.vue'
 import FormComponent from '../components/FormComponent.vue'
 import JSONEdit from '../components/JSONEdit.vue'
+import utils from './util/JsonToVue'
 
 export default {
   name: 'index',
@@ -145,7 +146,8 @@ export default {
       this.visible = true
     },
     handleOk (e) {
-      console.log(e)
+      const str = utils.setForm(this.canvasList)
+      console.log(str)
       this.visible = false
     }
   }

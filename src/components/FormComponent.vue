@@ -84,7 +84,6 @@ export default {
 </script>
 <style scoped>
 .form-model {
-
   display: flex;
   flex-flow: column;
   justify-content: left;
