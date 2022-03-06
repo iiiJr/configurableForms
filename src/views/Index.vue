@@ -118,6 +118,7 @@ export default {
     },
     delItem (index) {
       this.canvasList.splice(index, 1)
+      this.updateJSON.get()
     }
   }
 }
