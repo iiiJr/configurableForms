@@ -50,6 +50,15 @@
           <JSONEdit v-model="updateJSON" />
         </div>
       </div>
+      <a-modal v-model="visible" title="预览" @ok="handleOk">
+        <div class="modal_style">
+          <FormComponent
+          v-for="(element, index) in this.previewData"
+          :key=index
+          :element="element"
+          ></FormComponent>
+        </div>
+    </a-modal>
   </div>
 </template>
 
@@ -74,7 +83,9 @@ export default {
     return {
       activeIndex: {},
       editElement: -1,
-      replaceJson: []
+      replaceJson: [],
+      visible: false,
+      previewData: []
     }
   },
   computed: {
@@ -113,12 +124,29 @@ export default {
       window.console.log(evt)
     },
     onSubmit () {
+      this.previewData = []
       this.log('submit!', this.canvasList)
       console.log(this.canvasList)
+      for (const val in this.canvasList) {
+        this.previewData[val] = this.canvasList[val]
+      }
+      // console.log(this.previewData)
+      if (this.previewData.length === 0) {
+        console.log('没任何表单')
+      } else {
+        this.showModal()
+      }
     },
     delItem (index) {
       this.canvasList.splice(index, 1)
-      this.updateJSON.get()
+      // this.updateJSON.get()
+    },
+    showModal () {
+      this.visible = true
+    },
+    handleOk (e) {
+      console.log(e)
+      this.visible = false
     }
   }
 }
@@ -144,6 +172,7 @@ export default {
   background-color: #cfcfcfda;
   width: 50%;
   height: 100%;
+  overflow:auto;
 }
 .right {
   width: 35%;
@@ -177,7 +206,12 @@ p{
   margin: auto;
 }
 .center-button {
-  margin-top: 8px;
+  margin-top: 16px;
   display: flex;
+  margin-bottom: 16px;
+}
+.modal_style {
+  height: 600px;
+  overflow:auto;
 }
 </style>
