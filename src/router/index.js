@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-// import index from '@'
+import Index from '@/views/index.vue'
 
 Vue.use(VueRouter)
 
@@ -8,7 +8,7 @@ const routes = [
   {
     path: '/',
     name: 'index',
-    component: '../views/index.vue'
+    component: Index
   }
 ]
 
