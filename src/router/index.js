@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
-const Index = () => import('../views/index.vue')
+const Index = () => import('@/views/index.vue')
 
 const routes = [
   {
