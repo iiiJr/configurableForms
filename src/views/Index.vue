@@ -113,7 +113,9 @@ export default {
         showFoldingControls: 'always',
         formatOnPaste: true,
         formatOnType: true,
-        folding: true
+        folding: true,
+        isWholeLine: true,
+        className: 'rightLineDecoration'
       },
       randomkey: 123,
       activeIndex: {},
