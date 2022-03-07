@@ -59,7 +59,7 @@
           ></FormComponent>
         </div>
     </a-modal>
-    <a-modal cancel-text="取消" okText="创建代码" v-model="visibleCode" title="vue代码" @ok="handleCode">
+    <a-modal cancel-text="取消" okText="完成" v-model="visibleCode" title="vue代码" @ok="handleCode">
       <div>
         <MonacoEditor
                 height="600"
@@ -67,7 +67,7 @@
                 class="vs"
                 :key="randomkey"
                 style="text-align: left;background-color: #fff"
-                language="Vue"
+                language="html"
                 :code="code"
                 :editorOptions="options"
                 @mounted="onMounted"
@@ -107,7 +107,7 @@ export default {
         theme: 'vs',
         selectOnLineNumbers: true,
         roundedSelection: false,
-        readOnly: false,
+        readOnly: true,
         automaticLayout: true,
         glyphMargin: true,
         showFoldingControls: 'always',
@@ -115,7 +115,10 @@ export default {
         formatOnType: true,
         folding: true,
         isWholeLine: true,
-        className: 'rightLineDecoration'
+        className: 'rightLineDecoration',
+        autoIndent: false,
+        highlighted: [{ number: 1, class: 'red' }]
+
       },
       randomkey: 123,
       activeIndex: {},
