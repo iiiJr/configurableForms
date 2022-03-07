@@ -42,7 +42,7 @@
           </draggable>
           <div class="center-button">
             <a-button style="margin: auto;" type="primary" @click="onSubmit">
-              Create
+              生成表单
             </a-button>
           </div>
         </div>
@@ -50,7 +50,7 @@
           <JSONEdit v-model="updateJSON" />
         </div>
       </div>
-      <a-modal v-model="visible" title="预览" @ok="handleOk">
+      <a-modal cancel-text="取消" okText="创建代码" v-model="visible" title="预览" @ok="handleOk">
         <div class="modal_style">
           <FormComponent
           v-for="(element, index) in this.previewData"
@@ -58,6 +58,23 @@
           :element="element"
           ></FormComponent>
         </div>
+    </a-modal>
+    <a-modal cancel-text="取消" okText="创建代码" v-model="visibleCode" title="vue代码" @ok="handleCode">
+      <div>
+        <MonacoEditor
+                height="600"
+                width="100%"
+                class="vs"
+                :key="randomkey"
+                style="text-align: left;background-color: #fff"
+                language="Vue"
+                :code="code"
+                :editorOptions="options"
+                @mounted="onMounted"
+                @codeChange="onCodeChange"
+        >
+        </MonacoEditor>
+      </div>
     </a-modal>
   </div>
 </template>
@@ -70,11 +87,13 @@ import ComponentNode from '../components/ComponentNode.vue'
 import FormComponent from '../components/FormComponent.vue'
 import JSONEdit from '../components/JSONEdit.vue'
 import utils from './util/JsonToVue'
+import MonacoEditor from 'vue-monaco-editor'
 
 export default {
   name: 'index',
   components: {
     // HelloWorld
+    MonacoEditor,
     ComponentNode,
     JSONEdit,
     FormComponent,
@@ -82,11 +101,28 @@ export default {
   },
   data () {
     return {
+      code: 'oooo',
+      editor: null,
+      options: {
+        theme: 'vs',
+        selectOnLineNumbers: true,
+        roundedSelection: false,
+        readOnly: false,
+        automaticLayout: true,
+        glyphMargin: true,
+        showFoldingControls: 'always',
+        formatOnPaste: true,
+        formatOnType: true,
+        folding: true
+      },
+      randomkey: 123,
       activeIndex: {},
       editElement: -1,
       replaceJson: [],
       visible: false,
+      visibleCode: false,
       previewData: []
+      // vueData: []
     }
   },
   computed: {
@@ -142,13 +178,31 @@ export default {
       this.canvasList.splice(index, 1)
       // this.updateJSON.get()
     },
+    // 模态框事件
     showModal () {
       this.visible = true
     },
     handleOk (e) {
-      const str = utils.setForm(this.canvasList)
-      console.log(str)
       this.visible = false
+      this.createRandomkey()
+      this.code = utils.setForm(this.canvasList)
+      this.visibleCode = true
+    },
+    handleCode (e) {
+      this.visibleCode = false
+    },
+    // vscode编辑器事件
+    onMounted (editor) {
+      this.editor = editor
+      // console.log(editor)
+    },
+
+    onCodeChange (editor) {
+      // console.log(this.editor.getValue())
+      // console.log(editor)
+    },
+    createRandomkey () {
+      this.randomkey = Math.floor(Math.random() * (10, 1000000012313))
     }
   }
 }
