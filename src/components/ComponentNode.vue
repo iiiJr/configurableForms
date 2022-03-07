@@ -25,8 +25,8 @@ export default {
   flex-flow: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid #eef2f87e;
-  background-color: #838383d7;
+  border: 1px solid rgba(238,242,248,.49411764705882355);
+  background-color: rgba(94, 102, 106, 0.84);
 }
 .node{
   color: #000000;

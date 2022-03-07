@@ -218,6 +218,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
+  color: rgba(232, 230, 227, 0.85);
 }
 .body {
     display: flex;
@@ -225,12 +226,12 @@ export default {
     height: 100%;
 }
 .left {
-  background-color: #838383d7;
+  background-color: rgba(94, 102, 106, 0.84);
   width: 15%;
   height: 100%;
 }
 .center {
-  background-color: #cfcfcfda;
+  background-color: rgba(51, 55, 57, 0.85);
   width: 50%;
   height: 100%;
   overflow:auto;
@@ -257,6 +258,10 @@ p{
   border-left: 1px solid #8c90977e;
   border-right: 1px solid #8c90977e;
   background-color: #b9b9b9da;
+  border-bottom-color:1px solid rgba(79, 85, 89, 0.49);
+  border-left-color:1px solid rgba(79, 85, 89, 0.49);
+  border-right-color:1px solid rgba(79, 85, 89, 0.49);
+  background-color: rgba(64, 69, 71, 0.85);
 }
 .canvas_item_node {
   min-width: 80%;
