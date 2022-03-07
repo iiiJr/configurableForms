@@ -33,7 +33,7 @@ const scriptSection = data => {
   let temp = ''
   for (const val of data) {
     // console.log(val)
-    temp += `${val[0]}: ${val[1]}`
+    temp += `${val[0]}: ${val[1]},\n`
   }
   return `
 <script>
