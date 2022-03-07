@@ -3,7 +3,6 @@
 
 演示地址：https://configurable-forms.vercel.app
 
-提交时在控制台输出vue模板语言
 
 ## Project setup
 ```
